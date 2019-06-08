@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
             counter: 0
@@ -16,7 +16,7 @@ class App extends Component {
         }, 1000);
     }
 
-    render(){
+    render() {
         return (
             <div className="App">
                 <header className="App-header">
