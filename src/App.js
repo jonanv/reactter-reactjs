@@ -6,7 +6,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            counter: 0
+            counter: 0,
         }
 
         setInterval(() => {
