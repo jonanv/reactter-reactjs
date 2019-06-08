@@ -1,2 +1,2 @@
-# course-reactjs
-Course React JS
+# reactter-reactjs
+Twitter in React JS
