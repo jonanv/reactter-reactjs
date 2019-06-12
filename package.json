@@ -1,6 +1,8 @@
 {
   "name": "reactter-reactjs",
   "version": "0.1.0",
+  "description": "Clon de twitter con React",
+  "main": "/build/app.js",
   "private": true,
   "dependencies": {
     "babel-loader": "^8.0.6",
@@ -14,10 +16,9 @@
     "webpack-dev-server": "^3.7.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "webpack --colors",
+    "serve": "webpack-dev-server --content-base build/ --colors --progress",
+    "start": "yarn run build && yarn run serve"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.4"
   }
 }
