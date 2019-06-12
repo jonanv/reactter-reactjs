@@ -1,41 +1,21 @@
 {
   "name": "reactter-reactjs",
-  "version": "0.1.0",
-  "description": "Clon de twitter con React",
+  "version": "1.0.0",
+  "description": "Clone de twitter con React",
   "main": "/build/app.js",
+  "repository": "https://github.com/jonanv/reactter-reactjs.git",
+  "author": "Giovanni Vargas <jonan-vargas23@hotmail.com>",
+  "license": "MIT",
   "private": true,
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.6",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
     "webpack-dev-server": "^3.7.1"
-  },
-  "scripts": {
-    "build": "webpack --colors",
-    "serve": "webpack-dev-server --content-base build/ --colors --progress",
-    "start": "yarn run build && yarn run serve"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "webpack-cli": "^3.3.4"
   }
 }
