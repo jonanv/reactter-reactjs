@@ -6,6 +6,7 @@ const cssModules = 'modules&importLoaders=1&localIdentName=[name]__[local]__[has
 module.exports = {
     resolve: {
         extensions: ['', '.js', '.jsx']
+        
     },
 
     entry: ['./src/index.jsx'],
