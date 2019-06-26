@@ -12,7 +12,10 @@
     "author": "Giovanni Vargas <jonan-vargas23@hotmail.com>",
     "license": "MIT",
     "private": true,
-    "dependencies": {},
+    "dependencies": {
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
+    },
     "devDependencies": {
         "babel-cli": "^6.18.0",
         "babel-loader": "^6.2.7",
