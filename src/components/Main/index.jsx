@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import MessageList from '../MessageList';
 
 class Main extends Component {
-    render(){
-        return(
-            <div>
-                Main
-            </div>
+
+    constructor() {
+        super();
+        this.state = {
+            messages: [
+                { text: "Mensaje de prueba" },
+                { text: "otro mensaje más" }
+            ],
+        }
+    }
+
+    render() {
+        return (
+            <MessageList messages={this.state.messages} />
         );
     }
 }
