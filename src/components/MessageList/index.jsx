@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Message from '../Message';
 
 class MessageList extends Component {
 
@@ -9,9 +10,11 @@ class MessageList extends Component {
     render() {
         return (
             <div>
-                {this.props.messages.map((msg, i) => {
+                {this.props.messages.map((msg) => {
                     return (
-                        <span key={"msg_" + i}>{msg.text}</span>
+                        <Message
+                            text={msg.text}
+                        />
                     );
                 })}
             </div>
