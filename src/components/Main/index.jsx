@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MessageList from '../MessageList';
+import ProfileBar from '../ProfileBar';
 
 class Main extends Component {
 
@@ -24,8 +25,17 @@ class Main extends Component {
     }
 
     render() {
+        const { user } = this.props;
+        
         return (
-            <MessageList messages={this.state.messages} />
+            <div>
+                <ProfileBar 
+                    picture={user.photoURL}
+                    username={user.email.split('@')[0]}
+                    onOpenText={this.handleOpenText}
+                />
+                <MessageList messages={this.state.messages} />
+            </div>
         );
     }
 }
