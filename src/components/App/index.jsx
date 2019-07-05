@@ -7,7 +7,7 @@ import Main from '../Main';
 
 class App extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
             user: {
@@ -22,7 +22,7 @@ class App extends Component {
         return (
             <div>
                 <Header />
-                <Main user={this.state.user}/>
+                <Main user={this.state.user} />
             </div>
         );
     }

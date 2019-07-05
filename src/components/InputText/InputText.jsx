@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ProfileBar extends Component {
+class InputText extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class ProfileBar extends Component {
     }
 }
 
-export default ProfileBar;
+export default InputText;
