@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 import MessageList from '../MessageList';
 import ProfileBar from '../ProfileBar';
 import InputText from '../InputText';
@@ -10,6 +11,7 @@ class Main extends Component {
         this.state = {
             openText: false,
             messages: [{
+                id: uuid.v4(),
                 text: 'Mensaje del Tweet',
                 picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 displayName: 'Giovanni',
@@ -17,6 +19,7 @@ class Main extends Component {
                 date: Date.now() - (3 * 60 * 1000) //Minutos * segundos * segundos en milisegundos
             },
             {
+                id: uuid.v4(),
                 text: 'Este es un nuevo mensaje',
                 picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 displayName: 'Giovanni',
