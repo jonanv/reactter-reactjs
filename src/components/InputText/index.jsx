@@ -4,7 +4,7 @@ class InputText extends Component {
     render() {
         return (
             <div>
-
+                InputText
             </div>
         );
     }
