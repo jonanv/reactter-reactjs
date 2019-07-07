@@ -34,7 +34,7 @@ class Main extends Component {
     }
 
     renderOpenText() {
-        if (this.state.openText){
+        if (this.state.openText) {
             return (
                 <InputText />
             );
