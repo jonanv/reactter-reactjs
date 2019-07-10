@@ -32,6 +32,15 @@ class Main extends Component {
         this.handleCloseText = this.handleCloseText.bind(this);
     }
 
+    handleSentText(event) {
+        event.preventDefault();
+    }
+
+    handleCloseText(event) {
+        event.preventDefault();
+        this.setState({ openText: false });
+    }
+
     handleOpenText(event) {
         event.preventDefault(); //Previene o evita que se produzca el comportamiento por defecto del navegador
         this.setState({ openText: true });
@@ -46,14 +55,6 @@ class Main extends Component {
                 />
             );
         }
-    }
-
-    handleSentText() {
-
-    }
-
-    handleCloseText() {
-
     }
 
     render() {
