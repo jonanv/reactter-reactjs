@@ -27,8 +27,8 @@ class Main extends Component {
                 date: Date.now() - (30 * 60 * 1000)
             }]
         }
-        this.handleOpenText = this.handleOpenText.bind(this);
-        this.renderOpenText = this.renderOpenText.bind(this);
+        //this.handleOpenText = this.handleOpenText.bind(this);
+        //this.renderOpenText = this.renderOpenText.bind(this);
     }
 
     handleOpenText(event) {
@@ -54,7 +54,7 @@ class Main extends Component {
                     username={user.email.split('@')[0]}
                     onOpenText={this.handleOpenText}
                 />
-                {this.renderOpenText}
+                {this.renderOpenText()}
                 <MessageList messages={this.state.messages} />
             </div>
         );
