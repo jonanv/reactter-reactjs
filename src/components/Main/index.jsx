@@ -27,7 +27,7 @@ class Main extends Component {
                 date: Date.now() - (30 * 60 * 1000)
             }]
         }
-        //this.handleOpenText = this.handleOpenText.bind(this);
+        this.handleOpenText = this.handleOpenText.bind(this);
         //this.renderOpenText = this.renderOpenText.bind(this);
     }
 
