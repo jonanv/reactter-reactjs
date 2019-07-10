@@ -28,7 +28,8 @@ class Main extends Component {
             }]
         }
         this.handleOpenText = this.handleOpenText.bind(this);
-        //this.renderOpenText = this.renderOpenText.bind(this);
+        this.handleSentText = this.handleSentText.bind(this);
+        this.handleCloseText = this.handleCloseText.bind(this);
     }
 
     handleOpenText(event) {
@@ -39,9 +40,20 @@ class Main extends Component {
     renderOpenText() {
         if (this.state.openText) {
             return (
-                <InputText />
+                <InputText 
+                    onSentText={this.handleSentText} 
+                    onCloseText={this.handleCloseText}
+                />
             );
         }
+    }
+
+    handleSentText() {
+
+    }
+
+    handleCloseText() {
+
     }
 
     render() {
