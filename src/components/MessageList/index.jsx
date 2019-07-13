@@ -8,6 +8,8 @@ class MessageList extends Component {
 
     constructor(props) {
         super(props);
+        this.onRetweet = this.onRetweet.bind(this);
+        this.onFavorite = this.onFavorite.bind(this);
     }
 
     render() {
@@ -22,6 +24,10 @@ class MessageList extends Component {
                             displayName={msg.displayName}
                             username={msg.username}
                             date={msg.date}
+                            numRetweets={msg.retweets}
+                            numFavorites={msg.favorites}
+                            onRetweet={() => this.onRetweet}
+                            onFavorite={() => this.onFavorite}
                         />
                     );
                 }).reverse()}

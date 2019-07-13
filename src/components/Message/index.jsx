@@ -24,8 +24,14 @@ class Message extends Component {
                 <h3>{this.props.text}</h3>
                 <div className={styles.buttons}>
                     <div className={styles.icon}><span className='fa fa-reply'></span></div>
-                    <div className={styles.icon}><span className='fa fa-retweet'></span></div>
-                    <div className={styles.icon}><span className='fa fa-star'></span></div>
+                    <div className={styles.icon} onClick={this.props.onRetweet}>
+                        <span className='fa fa-retweet'></span>
+                        <span className={styles.num}>{this.props.numRetweets}</span>
+                    </div>
+                    <div className={styles.icon} onClick={this.props.onFavorite}>
+                        <span className='fa fa-star'></span>
+                        <span className={styles.num}>{this.props.numFavorites}</span>
+                    </div>
                 </div>
             </div>
         );

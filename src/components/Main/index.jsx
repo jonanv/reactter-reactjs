@@ -16,7 +16,9 @@ class Main extends Component {
                 picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 displayName: 'Giovanni',
                 username: '@jonanv',
-                date: Date.now() - (3 * 60 * 1000) //Minutos * segundos * segundos en milisegundos
+                date: Date.now() - (3 * 60 * 1000), //Minutos * segundos * segundos en milisegundos
+                retweets: 0,
+                favorites: 0,
             },
             {
                 id: uuid.v4(),
@@ -24,7 +26,9 @@ class Main extends Component {
                 picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 displayName: 'Giovanni',
                 username: '@jonanv',
-                date: Date.now() - (30 * 60 * 1000)
+                date: Date.now() - (30 * 60 * 1000),
+                retweets: 0,
+                favorites: 0,
             }]
         }
         this.handleOpenText = this.handleOpenText.bind(this);
