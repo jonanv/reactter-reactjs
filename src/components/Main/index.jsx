@@ -6,9 +6,10 @@ import InputText from '../InputText';
 
 class Main extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            user: Object.assign({}, this.props.user, { retweets: [] }, { favorites: [] }),
             openText: false,
             messages: [{
                 id: uuid.v4(),
@@ -38,12 +39,46 @@ class Main extends Component {
         this.handleFavorite = this.handleFavorite.bind(this);
     }
 
-    handleRetweet() {
+    handleRetweet(msgId) {
+        let alreadyRetweeted = this.state.user.favorites.filter(rt => rt === msgId);
 
+        if (alreadyRetweeted.length === 0) {
+            let messages = this.state.messages.map(msg => {
+                if (msg.id === msgId) {
+                    msg.retweets++;
+                }
+                return msg;
+            });
+        }
+
+        let user = Object.assign({}, this.state.user);
+        user.retweets.push(msgId);
+
+        this.setState({
+            messages,
+            user
+        });
     }
 
-    handleFavorite() {
+    handleFavorite(msgId) {
+        let alreadyFavorited = this.state.user.favorites.filter(fav => fav === msgId);
 
+        if (alreadyFavorited.length === 0) {
+            let messages = this.state.messages.map(msg => {
+                if (msg.id === msgId) {
+                    msg.favorites++;
+                }
+                return msg;
+            });
+        }
+
+        let user = Object.assign({}, this.state.user);
+        user.favorites.push(msgId);
+
+        this.setState({
+            messages,
+            user
+        });
     }
 
     handleSendText(event) {
