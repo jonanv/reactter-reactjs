@@ -11,12 +11,13 @@ class Main extends Component {
         this.state = {
             user: Object.assign({}, this.props.user, { retweets: [] }, { favorites: [] }),
             openText: false,
+            usernameToReply: '',
             messages: [{
                 id: uuid.v4(),
                 text: 'Mensaje del Tweet',
                 picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 displayName: 'Giovanni',
-                username: '@jonanv',
+                username: 'jonanv',
                 date: Date.now() - (3 * 60 * 1000), //Minutos * segundos * segundos en milisegundos
                 retweets: 0,
                 favorites: 0,
@@ -26,7 +27,7 @@ class Main extends Component {
                 text: 'Este es un nuevo mensaje',
                 picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 displayName: 'Giovanni',
-                username: '@jonanv',
+                username: 'jonanv',
                 date: Date.now() - (30 * 60 * 1000),
                 retweets: 0,
                 favorites: 0,
@@ -37,6 +38,34 @@ class Main extends Component {
         this.handleCloseText = this.handleCloseText.bind(this);
         this.handleRetweet = this.handleRetweet.bind(this);
         this.handleFavorite = this.handleFavorite.bind(this);
+        this.handleReplyTweet = this.handleReplyTweet.bind(this);
+    }
+
+    handleSendText(event) {
+        event.preventDefault();
+        let newMessage = {
+            id: uuid.v4(),
+            text: event.target.text.value,
+            picture: this.props.user.photoURL,
+            displayName: this.props.user.displayName,
+            username: this.props.user.email.split('@')[0],
+            date: Date.now()
+        }
+
+        this.setState({
+            messages: this.state.messages.concat([newMessage]),
+            openText: false,
+        });
+    }
+
+    handleCloseText(event) {
+        event.preventDefault();
+        this.setState({ openText: false });
+    }
+
+    handleOpenText(event) {
+        event.preventDefault(); //Previene o evita que se produzca el comportamiento por defecto del navegador
+        this.setState({ openText: true });
     }
 
     handleRetweet(msgId) {
@@ -81,31 +110,11 @@ class Main extends Component {
         }
     }
 
-    handleSendText(event) {
-        event.preventDefault();
-        let newMessage = {
-            id: uuid.v4(),
-            text: event.target.text.value,
-            picture: this.props.user.photoURL,
-            displayName: this.props.user.displayName,
-            username: this.props.user.email.split('@')[0],
-            date: Date.now()
-        }
-
+    handleReplyTweet(msgId, usernameToReply) {
         this.setState({
-            messages: this.state.messages.concat([newMessage]),
-            openText: false,
+            openText: true,
+            usernameToReply
         });
-    }
-
-    handleCloseText(event) {
-        event.preventDefault();
-        this.setState({ openText: false });
-    }
-
-    handleOpenText(event) {
-        event.preventDefault(); //Previene o evita que se produzca el comportamiento por defecto del navegador
-        this.setState({ openText: true });
     }
 
     renderOpenText() {
@@ -114,6 +123,7 @@ class Main extends Component {
                 <InputText
                     onSendText={this.handleSendText}
                     onCloseText={this.handleCloseText}
+                    usernameToReply={this.state.usernameToReply}
                 />
             );
         }
@@ -136,6 +146,7 @@ class Main extends Component {
                     messages={this.state.messages}
                     onRetweet={this.handleRetweet}
                     onFavorite={this.handleFavorite}
+                    onReplyTweet={this.handleReplyTweet}
                 />
             </div>
         );
