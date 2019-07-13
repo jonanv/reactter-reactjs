@@ -42,7 +42,11 @@ class Main extends Component {
             username: this.props.user.email.split('@')[0],
             date: Date.now()
         }
-        console.log(newMessage);
+
+        this.setState({
+            messages: this.state.messages.concat(newMessage),
+            openText: false,
+        });
     }
 
     handleCloseText(event) {
