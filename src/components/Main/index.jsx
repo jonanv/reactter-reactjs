@@ -40,7 +40,7 @@ class Main extends Component {
     }
 
     handleRetweet(msgId) {
-        let alreadyRetweeted = this.state.user.favorites.filter(rt => rt === msgId);
+        let alreadyRetweeted = this.state.user.retweets.filter(rt => rt === msgId);
 
         if (alreadyRetweeted.length === 0) {
             let messages = this.state.messages.map(msg => {
@@ -49,15 +49,15 @@ class Main extends Component {
                 }
                 return msg;
             });
+
+            let user = Object.assign({}, this.state.user);
+            user.retweets.push(msgId);
+
+            this.setState({
+                messages,
+                user
+            });
         }
-
-        let user = Object.assign({}, this.state.user);
-        user.retweets.push(msgId);
-
-        this.setState({
-            messages,
-            user
-        });
     }
 
     handleFavorite(msgId) {
@@ -70,15 +70,15 @@ class Main extends Component {
                 }
                 return msg;
             });
+
+            let user = Object.assign({}, this.state.user);
+            user.favorites.push(msgId);
+
+            this.setState({
+                messages,
+                user
+            });
         }
-
-        let user = Object.assign({}, this.state.user);
-        user.favorites.push(msgId);
-
-        this.setState({
-            messages,
-            user
-        });
     }
 
     handleSendText(event) {
@@ -93,7 +93,7 @@ class Main extends Component {
         }
 
         this.setState({
-            messages: this.state.messages.concat(newMessage),
+            messages: this.state.messages.concat([newMessage]),
             openText: false,
         });
     }
