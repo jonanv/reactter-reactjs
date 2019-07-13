@@ -34,6 +34,16 @@ class Main extends Component {
         this.handleOpenText = this.handleOpenText.bind(this);
         this.handleSendText = this.handleSendText.bind(this);
         this.handleCloseText = this.handleCloseText.bind(this);
+        this.handleRetweet = this.handleRetweet.bind(this);
+        this.handleFavorite = this.handleFavorite.bind(this);
+    }
+
+    handleRetweet() {
+
+    }
+
+    handleFavorite() {
+
     }
 
     handleSendText(event) {
@@ -84,8 +94,14 @@ class Main extends Component {
                     username={user.email.split('@')[0]}
                     onOpenText={this.handleOpenText}
                 />
+
                 {this.renderOpenText()}
-                <MessageList messages={this.state.messages} />
+
+                <MessageList
+                    messages={this.state.messages}
+                    onRetweet={this.handleRetweet}
+                    onFavorite={this.handleFavorite}
+                />
             </div>
         );
     }
