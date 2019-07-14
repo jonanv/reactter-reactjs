@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'normalize-css';
 
 import styles from './app.css';
@@ -21,10 +22,32 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <Header />
-                <Main user={this.state.user} />
-            </div>
+            <BrowserRouter>
+                <Switch>
+                    <div>
+                        <Header />
+                        <Route exact path='/' render={() => {
+                            if (this.state.user) {
+                                return (
+                                    <Main user={this.state.user} />
+                                );
+                            }
+                            else {
+                                // Render <Login />
+                                // TODO: Falta realizar el Login
+                            }
+                        }} />
+                        <Route path='/profile' render={() => {
+                            // Render <Profile />
+                            // TODO: Falta realizar el Profile
+                        }} />
+                        <Route path='/user/:username' render={({ params }) => {
+                            // Render <Profile />
+                            // TODO: Falta realizar el Profile pasando params.username
+                        }} />
+                    </div>
+                </Switch>
+            </BrowserRouter>
         );
     }
 }
