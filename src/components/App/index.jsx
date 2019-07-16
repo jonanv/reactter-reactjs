@@ -39,13 +39,15 @@ class App extends Component {
                             }
                         }} />
                         <Route path='/profile' render={() => {
-                            <Profile
-                                picture={this.state.user.photoURL}
-                                displayName={this.state.user.displayName}
-                                username={this.state.user.email.split('@')[0]}
-                                emailAddress={this.state.user.email}
-                                location={this.state.user.location}
-                            />
+                            return (
+                                <Profile
+                                    picture={this.state.user.photoURL}
+                                    displayName={this.state.user.displayName}
+                                    username={this.state.user.email.split('@')[0]}
+                                    emailAddress={this.state.user.email}
+                                    location={this.state.user.location}
+                                />
+                            );
                         }} />
                         <Route path='/user/:username' render={({ params }) => {
                             // Render <Profile />
