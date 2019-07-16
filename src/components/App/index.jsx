@@ -5,6 +5,7 @@ import 'normalize-css';
 import styles from './app.css';
 import Header from '../Header';
 import Main from '../Main';
+import Profile from '../Profile';
 
 class App extends Component {
 
@@ -15,7 +16,7 @@ class App extends Component {
                 photoURL: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 email: 'jonan-vargas23@hotmail.com',
                 displayName: 'Giovanni',
-                onOpenText: false
+                location: 'Manizales'
             }
         }
     }
@@ -38,8 +39,13 @@ class App extends Component {
                             }
                         }} />
                         <Route path='/profile' render={() => {
-                            // Render <Profile />
-                            // TODO: Falta realizar el Profile
+                            <Profile
+                                picture={this.state.user.photoURL}
+                                displayName={this.state.user.displayName}
+                                username={this.state.user.email.split('@')[0]}
+                                emailAddress={this.state.user.email}
+                                location={this.state.user.location}
+                            />
                         }} />
                         <Route path='/user/:username' render={({ params }) => {
                             // Render <Profile />
