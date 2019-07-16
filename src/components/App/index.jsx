@@ -50,8 +50,12 @@ class App extends Component {
                             );
                         }} />
                         <Route path='/user/:username' render={({ params }) => {
-                            // Render <Profile />
-                            // TODO: Falta realizar el Profile pasando params.username
+                            return (
+                                <Profile
+                                    displayName={params.username}
+                                    username={params.username}
+                                />
+                            );
                         }} />
                     </div>
                 </Switch>
