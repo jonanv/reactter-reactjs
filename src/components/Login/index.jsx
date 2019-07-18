@@ -7,6 +7,14 @@ class Login extends Component {
         super(props);
     }
 
+    render() {
+        return(
+            <div className={styles.root}>
+
+            </div>
+        );
+    }
+
 }
 
 export default Login;

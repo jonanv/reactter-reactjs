@@ -6,6 +6,7 @@ import styles from './app.css';
 import Header from '../Header';
 import Main from '../Main';
 import Profile from '../Profile';
+import Login from '../Login';
 
 class App extends Component {
 
@@ -34,8 +35,9 @@ class App extends Component {
                                 );
                             }
                             else {
-                                // Render <Login />
-                                // TODO: Falta realizar el Login
+                                return (
+                                    <Login />
+                                );
                             }
                         }} />
                         <Route path='/profile' render={() => {
