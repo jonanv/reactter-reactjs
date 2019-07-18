@@ -13,13 +13,20 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
+            /*
             user: {
                 photoURL: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 email: 'jonan-vargas23@hotmail.com',
                 displayName: 'Giovanni',
                 location: 'Manizales'
             }
+            */
         }
+        this.handleOnAuth = this.handleOnAuth.bind(this);
+    }
+
+    handleOnAuth() {
+        console.log("Auth");
     }
 
     render() {
@@ -36,7 +43,7 @@ class App extends Component {
                             }
                             else {
                                 return (
-                                    <Login />
+                                    <Login onAuth={this.handleOnAuth} />
                                 );
                             }
                         }} />
