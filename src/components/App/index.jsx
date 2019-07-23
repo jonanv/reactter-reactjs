@@ -13,6 +13,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
+            user: null,
             /*
             user: {
                 photoURL: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
@@ -34,7 +35,7 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <div>
-                        <Header />
+                        <Header nombreApp="Reactter"/>
                         <Route exact path='/' render={() => {
                             if (this.state.user) {
                                 return (
