@@ -64,6 +64,7 @@ class App extends Component {
                                     displayName={params.username}
                                     username={params.username}
                                 />
+                                // TODO: No funciona este enlace, se debe correguir
                             );
                         }} />
                     </div>
