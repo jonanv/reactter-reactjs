@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import firebase from 'firebase';
 import 'normalize-css';
 
 import styles from './app.css';
@@ -27,7 +28,8 @@ class App extends Component {
     }
 
     handleOnAuth() {
-        console.log("Auth");
+        const provider = new firebase.auth.GithubAuthProvider();
+        firebase.auth().signInWithPopup();
     }
 
     render() {
