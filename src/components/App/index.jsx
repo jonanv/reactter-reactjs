@@ -15,16 +15,20 @@ class App extends Component {
         super();
         this.state = {
             user: null,
-            
+
             user: {
                 photoURL: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 email: 'jonan-vargas23@hotmail.com',
                 displayName: 'Giovanni',
                 location: 'Manizales'
             }
-            
+
         }
         this.handleOnAuth = this.handleOnAuth.bind(this);
+    }
+
+    componentWillMount() {
+
     }
 
     handleOnAuth() {
@@ -39,7 +43,7 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <div>
-                        <Header nombreApp="Reactter"/>
+                        <Header nombreApp="Reactter" />
                         <Route exact path='/' render={() => {
                             if (this.state.user) {
                                 return (
