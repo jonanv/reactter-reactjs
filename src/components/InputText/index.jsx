@@ -14,7 +14,7 @@ function InputText({ onSendText, usernameToReply, onCloseText }) {
             <textarea
                 className={styles.text}
                 name="text"
-                defaultValue={(sernameToReply) ? `@${usernameToReply} ` : ''}
+                defaultValue={(usernameToReply) ? `@${usernameToReply} ` : ''}
             >
             </textarea>
             <div className={styles.buttons}>
