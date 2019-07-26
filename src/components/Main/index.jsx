@@ -6,7 +6,8 @@ import ProfileBar from '../ProfileBar';
 import InputText from '../InputText';
 
 const propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    onLogout: PropTypes.func.isRequired
 }
 
 class Main extends Component {
@@ -135,7 +136,7 @@ class Main extends Component {
     }
 
     render() {
-        const { user } = this.props;
+        const { user, onLogout } = this.props;
 
         return (
             <div>
@@ -143,6 +144,7 @@ class Main extends Component {
                     picture={user.photoURL}
                     username={user.email.split('@')[0]}
                     onOpenText={this.handleOpenText}
+                    onLogout={onLogout}
                 />
 
                 {this.renderOpenText()}

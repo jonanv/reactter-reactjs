@@ -16,19 +16,27 @@ class App extends Component {
         this.state = {
             user: null,
 
-            user: {
+            /*user: {
                 photoURL: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
                 email: 'jonan-vargas23@hotmail.com',
                 displayName: 'Giovanni',
                 location: 'Manizales'
-            }
+            }*/
 
         }
         this.handleOnAuth = this.handleOnAuth.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     componentWillMount() {
-
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState({ user });
+            }
+            else {
+                this.setState({ user: null });
+            }
+        })
     }
 
     handleOnAuth() {
@@ -36,6 +44,12 @@ class App extends Component {
         firebase.auth().signInWithPopup(provider)
             .then(result => console.log(`${result.user.email} ha iniciado sesión`))
             .catch(error => console.error(`Error: ${error.code}: ${error.message}`))
+    }
+
+    handleLogout() {
+        firebase.auth().signOut()
+            .then(() => console.log('Te has desconectado correctamente'))
+            .catch(() => console.error('Un error ocurrió'))
     }
 
     render() {
@@ -47,7 +61,10 @@ class App extends Component {
                         <Route exact path='/' render={() => {
                             if (this.state.user) {
                                 return (
-                                    <Main user={this.state.user} />
+                                    <Main
+                                        user={this.state.user}
+                                        onLogout={this.handleLogout}
+                                    />
                                 );
                             }
                             else {
