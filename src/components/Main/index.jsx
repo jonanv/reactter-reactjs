@@ -48,7 +48,9 @@ class Main extends Component {
             picture: this.props.user.photoURL,
             displayName: this.props.user.displayName,
             username: this.props.user.email.split('@')[0],
-            date: Date.now()
+            date: Date.now(),
+            retweets: 0,
+            favorites: 0,
         }
 
         const messageRef = firebase.database().ref().child('messages');
