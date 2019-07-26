@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
+import firebase from 'firebase';
 import MessageList from '../MessageList';
 import ProfileBar from '../ProfileBar';
 import InputText from '../InputText';
@@ -18,26 +19,7 @@ class Main extends Component {
             user: Object.assign({}, this.props.user, { retweets: [] }, { favorites: [] }),
             openText: false,
             usernameToReply: '',
-            messages: [{
-                id: uuid.v4(),
-                text: 'Mensaje del Tweet',
-                picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
-                displayName: 'Giovanni',
-                username: 'jonanv',
-                date: Date.now() - (3 * 60 * 1000), //Minutos * segundos * segundos en milisegundos
-                retweets: 0,
-                favorites: 0,
-            },
-            {
-                id: uuid.v4(),
-                text: 'Este es un nuevo mensaje',
-                picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
-                displayName: 'Giovanni',
-                username: 'jonanv',
-                date: Date.now() - (30 * 60 * 1000),
-                retweets: 0,
-                favorites: 0,
-            }]
+            messages: []
         }
         this.handleOpenText = this.handleOpenText.bind(this);
         this.handleSendText = this.handleSendText.bind(this);
@@ -45,6 +27,17 @@ class Main extends Component {
         this.handleRetweet = this.handleRetweet.bind(this);
         this.handleFavorite = this.handleFavorite.bind(this);
         this.handleReplyTweet = this.handleReplyTweet.bind(this);
+    }
+
+    componentWillMount() {
+        const messagesRef = firebase.database().ref().child('messages');
+
+        messagesRef.on('child_added', snapshot => {
+            this.setState({
+                messages: this.state.messages.concat(snapshot.val()),
+                openText: false
+            });
+        })
     }
 
     handleSendText(event) {
@@ -58,10 +51,9 @@ class Main extends Component {
             date: Date.now()
         }
 
-        this.setState({
-            messages: this.state.messages.concat([newMessage]),
-            openText: false,
-        });
+        const messageRef = firebase.database().ref().child('messages');
+        const messageID = messageRef.push();
+        messageID.set(newMessage);
     }
 
     handleCloseText(event) {
@@ -163,3 +155,26 @@ class Main extends Component {
 Main.propTypes = propTypes;
 
 export default Main;
+
+
+
+            /*messages: [{
+                id: uuid.v4(),
+                text: 'Mensaje del Tweet',
+                picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
+                displayName: 'Giovanni',
+                username: 'jonanv',
+                date: Date.now() - (3 * 60 * 1000), //Minutos * segundos * segundos en milisegundos
+                retweets: 0,
+                favorites: 0,
+            },
+            {
+                id: uuid.v4(),
+                text: 'Este es un nuevo mensaje',
+                picture: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
+                displayName: 'Giovanni',
+                username: 'jonanv',
+                date: Date.now() - (30 * 60 * 1000),
+                retweets: 0,
+                favorites: 0,
+            }]*/

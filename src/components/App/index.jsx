@@ -14,15 +14,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            user: null,
-
-            /*user: {
-                photoURL: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
-                email: 'jonan-vargas23@hotmail.com',
-                displayName: 'Giovanni',
-                location: 'Manizales'
-            }*/
-
+            user: null
         }
         this.handleOnAuth = this.handleOnAuth.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
@@ -101,3 +93,11 @@ class App extends Component {
 }
 
 export default App;
+
+
+            /*user: {
+                photoURL: 'https://pbs.twimg.com/profile_images/1065088918519988224/EhhCjP4b_400x400.jpg',
+                email: 'jonan-vargas23@hotmail.com',
+                displayName: 'Giovanni',
+                location: 'Manizales'
+            }*/
