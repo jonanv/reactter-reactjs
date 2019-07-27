@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import firebase from 'firebase';
-import App from './components/App';
 
 // Initialize Firebase
 firebase.initializeApp({
@@ -13,6 +12,8 @@ firebase.initializeApp({
     messagingSenderId: "234182126081",
     appId: "1:234182126081:web:da0b067b678e782b"
 });
+
+import App from './components/App';
 
 render(
     <App />,
